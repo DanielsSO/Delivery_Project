@@ -1,0 +1,31 @@
+CREATE TABLE Usuarios (
+    Id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    apellido VARCHAR(100) NOT NULL,
+    pasword VARCHAR(100),
+    email VARCHAR(100) NOT NULL UNIQUE,
+    telefono VARCHAR(20),
+    tipo ENUM('USUARIO', 'CLIENTE') NOT NULL
+);
+
+SELECT * FROM Usuarios;
+SELECT* FROM Envios;
+
+
+CREATE TABLE Envios(
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  envia_id INT NOT NULL,
+  recibe_id INT NOT NULL,
+  direccionEnvia VARCHAR(150),
+  otros_datosEnvia VARCHAR(150),
+  direccionRecibe VARCHAR(150),
+  otros_datosRecibe VARCHAR(150),
+  fecha_envio DATE,
+  numero_rastreo VARCHAR(50) UNIQUE NOT NULL,
+  FOREIGN KEY (envia_id) REFERENCES Usuarios(id) ON DELETE CASCADE,
+  FOREIGN KEY (recibe_id) REFERENCES Usuarios(id) ON DELETE CASCADE
+);
+
+
+DROP TABLE Envios;
+DROP TABLE Usuarios;
