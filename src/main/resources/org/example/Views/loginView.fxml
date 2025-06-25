@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+
+<?import javafx.scene.control.Button?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml" fx:controller="org.example.Views.loginView" prefWidth="1500" prefHeight="820">
+
+    <ImageView fitWidth="38" fitHeight="38" preserveRatio="true" layoutX="80" layoutY="260">
+        <image>
+            <Image url="https://static.vecteezy.com/system/resources/thumbnails/014/455/904/small/delivery-truck-icon-icon-on-transparent-background-free-png.png"/>
+        </image>
+    </ImageView>
+
+    <ImageView fitWidth="1100" fitHeight="820" layoutX="400">
+        <image>
+            <Image url="https://img.freepik.com/premium-vector/delivery-service-concept-world-map-cargo-van-courier-with-boxes-vector-illustration_357257-1254.jpg"/>
+        </image>
+    </ImageView>
+
+
+    <VBox spacing="20" layoutY="250" layoutX="80" prefWidth="220" maxWidth="220" alignment="CENTER">
+        <Label text="Delivery" style="-fx-font-size: 38px;"/>
+
+
+        <TextField fx:id="txtEmail" promptText="Correo electronico" prefWidth="200" maxWidth="200"/>
+        <TextField fx:id="txtPassword" promptText="Contraseña" prefWidth="200" maxWidth="200"/>
+
+        <HBox spacing="10" alignment="CENTER">
+            <Button fx:id="btnSiguiente" onAction="#siguiente" text="Siguiente" />
+            <Button fx:id="btnCrear" text="Crear Cuenta" />
+        </HBox>
+
+        <Label fx:id="lblMensaje" style="-fx-text-fill: black;"/>
+    </VBox>
+</AnchorPane>

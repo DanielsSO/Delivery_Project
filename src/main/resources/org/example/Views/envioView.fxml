@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.ImageView?>
+
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.AnchorPane?>
+<Pane xmlns:fx="http://javafx.com/fxml" fx:controller="org.example.Views.envioView" prefWidth="1500" prefHeight="820">
+    <Label fx:id="lblInicio" text="Inicio" style="-fx-font-size: 18px;"></Label>
+    <ImageView fx:id="menuView" onMouseClicked="#volver" fitWidth="30" fitHeight="30" pickOnBounds="true" />
+
+    <Label fx:id="lblInfo" text="Informacion del Envio" style="-fx-font-size: 15px;"/>
+
+    <AnchorPane fx:id="AnchoPaneContenedor" >
+        <Rectangle width="340" height="520" arcWidth="20" arcHeight="20" fill="#e0e0e0" stroke="gray" strokeWidth="3"/>
+            <VBox spacing="15" prefWidth="300" prefHeight="200" AnchorPane.leftAnchor="10" AnchorPane.topAnchor="10">
+                <Label text="¿De donde se envia tu paquete?" style="-fx-font-size: 15px;"/>
+
+                <Label text="Nombre: " style="-fx-font-size: 12px;"/>
+                <TextField fx:id="txtNombreEnvia" promptText="Nombre quien recibe" prefWidth="700"/>
+                <Label text="Telefono: " style="-fx-font-size: 12px;" />
+                <TextField fx:id="txtTelefonoEnvia" promptText="Telefono" prefWidth="700"/>
+                <Label text="Direccion completa: " style="-fx-font-size: 12px;" />
+                <TextField fx:id="txtDireccionEnvia" promptText="Escribe tu direccion completa" prefWidth="700"/>
+                <Label text="Otros datos: " style="-fx-font-size: 12px;" />
+                <TextField fx:id="txtOtrosEnvia" promptText="Datos adicionales de tu direccion" prefWidth="700"/>
+                <Label text="Correo electronico: " style="-fx-font-size: 12px;" />
+                <TextField fx:id="txtEmailEnvia" promptText="Correo electronico" prefWidth="700"/>
+
+        </VBox>
+    </AnchorPane>
+
+
+    <AnchorPane fx:id="AnchoPaneContenedor2" >
+        <Rectangle width="340" height="520" arcWidth="20" arcHeight="20" fill="#e0e0e0" stroke="gray" strokeWidth="3"/>
+        <VBox spacing="15" prefWidth="300" prefHeight="200" AnchorPane.leftAnchor="10" AnchorPane.topAnchor="10">
+            <Label text="¿A donde se envia tu paquete?" style="-fx-font-size: 15px;"/>
+
+            <Label text="Nombre: " style="-fx-font-size: 12px;"/>
+            <TextField fx:id="txtNombreRecibe" promptText="Nombre quien envia" prefWidth="700"/>
+            <Label text="Telefono: " style="-fx-font-size: 12px;" />
+            <TextField fx:id="txtTelefonoRecibe" promptText="Telefono" prefWidth="700"/>
+            <Label text="Direccion completa: " style="-fx-font-size: 12px;" />
+            <TextField fx:id="txtDireccionRecibe" promptText="Escribe tu direccion completa" prefWidth="700"/>
+            <Label text="Otros datos: " style="-fx-font-size: 12px;" />
+            <TextField fx:id="txtOtrosRecibe" promptText="Datos adicionales de tu direccion" prefWidth="700"/>
+            <Label text="Correo electronico: " style="-fx-font-size: 12px;" />
+            <TextField fx:id="txtEmailRecibe" promptText="Correo electronico" prefWidth="700"/>
+
+            <HBox spacing="10" alignment="CENTER">
+                <Button fx:id="btnSiguiente" onAction="#siguiente" text="Siguiente" />
+            </HBox>
+
+            <Label fx:id="lblMensaje" style="-fx-text-fill: green;"/>
+            <Label fx:id="lblMensaje2" style="-fx-text-fill: green;"/>
+        </VBox>
+    </AnchorPane>
+
+</Pane>
+
