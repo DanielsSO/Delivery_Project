@@ -21,7 +21,7 @@ public class GoogleAuthService {
 
         GoogleClientSecrets clientSecrets = GoogleClientSecrets.load(
                 GsonFactory.getDefaultInstance(),
-                new InputStreamReader(getClass().getResourceAsStream("/client_secret_61238432604-sv8b7olrkt0rcttvddkger2q57slchme.apps.googleusercontent.com.json"))
+                new InputStreamReader(getClass().getResourceAsStream(""))
         );
 
         GoogleAuthorizationCodeFlow flow = new GoogleAuthorizationCodeFlow.Builder(
