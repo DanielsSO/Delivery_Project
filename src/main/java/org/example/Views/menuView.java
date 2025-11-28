@@ -6,17 +6,18 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import javax.imageio.IIOException;
 
-import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Arrays;
@@ -25,10 +26,10 @@ import java.util.ResourceBundle;
 
 public class menuView implements Initializable {
     @FXML
-    private ImageView imageView, imageEnvio, imageFondo, imageRastrear, imageInfo;
+    private ImageView imageView, imageEnvio, imageFondo, imageRastrear, imageInfo ;
 
     @FXML
-    private Label lblEnvio, lblRastrear, lblInfoEnvios;
+    private Label lblEnvio, lblRastrear, lblInfoEnvios, lblLogout;
 
     private final List<Image> images = Arrays.asList(
             new Image(getClass().getResource("/imagen/imagen.jpg").toString()),
@@ -130,7 +131,10 @@ public class menuView implements Initializable {
                     scene.heightProperty().subtract(lblEnvio.heightProperty()).subtract(50)
             );
 
-
+            lblLogout.layoutXProperty().bind(
+                    scene.widthProperty().subtract(lblLogout.widthProperty()).subtract(10)
+            );
+            lblLogout.setLayoutY(20);
         });
     }
 
@@ -211,6 +215,22 @@ public class menuView implements Initializable {
             e.printStackTrace();
         }catch (IOException e){
             throw  new RuntimeException(e);
+        }
+    }
+
+    @FXML
+    private void volver(MouseEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/Views/loginView.fxml"));
+            Parent root = loader.load();
+
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Iniciar Sesion");
+            stage.show();
+
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }

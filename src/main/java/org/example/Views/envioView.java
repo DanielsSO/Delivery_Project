@@ -56,16 +56,12 @@ public class envioView implements Initializable {
         Platform.runLater(() -> {
             Scene scene = menuView.getScene();
 
-
-            // Posicionar a la derecha con margen 50px
             menuView.layoutXProperty().bind(
                     scene.widthProperty().subtract(menuView.fitWidthProperty()).subtract(20)
             );
 
-            // Posicionar fijo 20px desde arriba (sin binding)
             menuView.setLayoutY(20);
 
-            // Para el label posicionarlo igual
             lblInicio.layoutXProperty().bind(
                     scene.widthProperty().subtract(lblInicio.widthProperty()).subtract(49)
             );
@@ -96,13 +92,13 @@ public class envioView implements Initializable {
                 // Segundo form
                 AnchoPaneContenedor2.layoutXProperty().bind(
                         scene.widthProperty()
-                                .subtract(AnchoPaneContenedor2.widthProperty())  // corregido aquí
+                                .subtract(AnchoPaneContenedor2.widthProperty())
                                 .divide(2)
                                 .add(forms2X)
                 );
                 AnchoPaneContenedor2.layoutYProperty().bind(
                         scene.heightProperty()
-                                .subtract(AnchoPaneContenedor2.heightProperty())  // corregido aquí
+                                .subtract(AnchoPaneContenedor2.heightProperty())
                                 .divide(2)
                                 .add(forms2Y)
                 );
@@ -158,7 +154,6 @@ public class envioView implements Initializable {
         envioController envioCtrl = new envioController();
         envioCtrl.crearEnvio(envia_id, recibe_id, envio);
 
-        // Limpiar campos después de guardar exitosamente
         txtNombreEnvia.clear();
         txtTelefonoEnvia.clear();
         txtDireccionEnvia.clear();

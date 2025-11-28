@@ -1,5 +1,6 @@
 package org.example.Views;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -9,7 +10,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import org.example.Controller.usuarioController;
+import org.example.Models.GoogleUser;
 import org.example.Models.usuarioModel;
+import org.example.service.GoogleAuthService;
 
 import javax.imageio.IIOException;
 
@@ -88,4 +91,41 @@ public class loginView {
             throw new RuntimeException(e);
         }
     }
+
+    public void onGoogleLoginClick(ActionEvent event) {
+        try {
+            GoogleAuthService googleService = new GoogleAuthService();
+            GoogleUser gUser = googleService.login();
+
+            if (gUser == null || gUser.getEmail() == null) {
+                System.out.println("No se obtuvo información del usuario Google.");
+                return;
+            }
+
+            usuarioController uc = new usuarioController();
+            usuarioModel usuario = uc.loginConGoogle(gUser);
+
+            if (usuario != null) {
+                System.out.println("Sesión iniciada: " + usuario.getEmail());
+
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/example/Views/menuView.fxml"));
+                Parent root = fxmlLoader.load();
+
+                Stage stage = new Stage();
+                stage.setScene(new Scene(root));
+                stage.setTitle("Menu");
+                stage.show();
+
+                Stage loginStage = (Stage) txtEmail.getScene().getWindow();
+                loginStage.close();
+
+            } else {
+                System.out.println("Error al crear/iniciar sesión con Google.");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 }

@@ -24,4 +24,6 @@
     <Label fx:id="lblRastrear" text="Rastrear" style="-fx-font-size: 18px; -fx-text-fill: white; -fx-font-weight: bold;" />
 
     <Label fx:id="lblInfoEnvios" text="Envios" style="-fx-font-size: 18px; -fx-text-fill: white; -fx-font-weight: bold;" />
+
+    <Label fx:id="lblLogout" text="Cerrar sesion" style="-fx-font-size: 18px; -fx-text-fill: white; -fx-font-weight: bold;" onMouseClicked="#volver" />
 </Pane>

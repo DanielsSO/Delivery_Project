@@ -1,6 +1,7 @@
 package org.example.Models;
 
 public class usuarioModel {
+    private int id;
     private String nombre;
     private String apellido;
     private String password;
@@ -12,12 +13,26 @@ public class usuarioModel {
 
     }
 
-    public usuarioModel(String nombre, String apellido,String password, String email, String telefono) {
+    public usuarioModel(int id, String nombre, String apellido,String password, String email, String telefono) {
+        this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
         this.password = password;
         this.email = email;
         this.telefono = telefono;
+    }
+
+    public usuarioModel(String nombre, String apellido, String password, String email, String telefono) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.password = password;
+        this.email = email;
+        this.telefono = telefono;
+        this.tipo = "Cliente";
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getNombre() {
@@ -38,6 +53,10 @@ public class usuarioModel {
 
     public String getTelefono() {
         return telefono;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public void setNombre(String nombre) {

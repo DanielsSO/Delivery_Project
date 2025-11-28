@@ -1,6 +1,6 @@
 package org.example.Controller;
 
-import org.example.Models.JDBCUtil;
+import org.example.Models.GoogleUser;
 import org.example.Models.usuarioModel;
 
 import java.sql.*;
@@ -136,4 +136,57 @@ public class usuarioController {
         }
         return -1;
     }
+
+    public usuarioModel loginConGoogle(GoogleUser gUser) {
+        if (gUser == null || gUser.getEmail() == null || gUser.getEmail().isEmpty()) {
+            return null;
+        }
+
+        String buscar = "SELECT Id, nombre, apellido, email, tipo FROM Usuarios WHERE email = ?";
+        String crear = "INSERT INTO Usuarios (nombre, apellido, pasword, email, tipo) VALUES (?, ?, '', ?, 'USUARIO')";
+
+        try (Connection connection = JDBCUtil.getConnection()) {
+
+            PreparedStatement stmtBuscar = connection.prepareStatement(buscar);
+            stmtBuscar.setString(1, gUser.getEmail());
+            ResultSet rs = stmtBuscar.executeQuery();
+
+            if (rs.next()) {
+                usuarioModel usuario = new usuarioModel();
+                usuario.setId(rs.getInt("Id"));
+                usuario.setNombre(rs.getString("nombre"));
+                usuario.setApellido(rs.getString("apellido"));
+                usuario.setEmail(rs.getString("email"));
+                usuario.setTipo(rs.getString("tipo"));
+                return usuario;
+            }
+
+            // No existe -> crear
+            PreparedStatement stmtCrear = connection.prepareStatement(crear, Statement.RETURN_GENERATED_KEYS);
+            String nombre = gUser.getName() != null ? gUser.getName() : "GoogleUser";
+            String apellido = "";
+            stmtCrear.setString(1, nombre);
+            stmtCrear.setString(2, apellido);
+            stmtCrear.setString(3, gUser.getEmail());
+
+            stmtCrear.executeUpdate();
+
+            ResultSet key = stmtCrear.getGeneratedKeys();
+            if (key.next()) {
+                usuarioModel usuario = new usuarioModel();
+                usuario.setId(key.getInt(1));
+                usuario.setNombre(nombre);
+                usuario.setApellido(apellido);
+                usuario.setEmail(gUser.getEmail());
+                usuario.setTipo("USUARIO");
+                return usuario;
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
 }

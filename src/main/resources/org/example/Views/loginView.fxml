@@ -34,8 +34,23 @@
         <HBox spacing="10" alignment="CENTER">
             <Button fx:id="btnSiguiente" onAction="#siguiente" text="Siguiente" />
             <Button fx:id="btnCrear" text="Crear Cuenta" />
+
         </HBox>
 
+        <Button fx:id="btnGoogle" text="Continuar con Google"
+                onAction="#onGoogleLoginClick" styleClass="google-button">
+            <graphic>
+                <ImageView fitHeight="20" fitWidth="40">
+                    <image>
+                        <Image url="/imagen/google_logo.png"/>
+                    </image>
+                </ImageView>
+            </graphic>
+        </Button>
+
         <Label fx:id="lblMensaje" style="-fx-text-fill: black;"/>
+
     </VBox>
+
+
 </AnchorPane>

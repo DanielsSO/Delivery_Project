@@ -1,8 +1,5 @@
 package org.example.Controller;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import org.example.Models.JDBCUtil;
 import org.example.Models.envioModel;
 
 import java.sql.*;

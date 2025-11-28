@@ -1,24 +1,14 @@
 package org.example.Views;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import org.example.Controller.usuarioController;
-import org.example.Models.JDBCUtil;
 import org.example.Models.usuarioModel;
 
 
 import javafx.scene.control.TextField;
-
-import javax.imageio.IIOException;
-import java.io.IOException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 
 public class crearCuentaView {
 
