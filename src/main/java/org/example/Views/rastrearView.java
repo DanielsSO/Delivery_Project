@@ -14,7 +14,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import org.example.Controller.JDBCUtil;
+import org.example.utils.JDBCUtil;
 import org.example.Models.envioModel;
 
 import java.net.URL;
@@ -105,9 +105,9 @@ public class rastrearView implements Initializable {
                 envioModel envio = new envioModel(
                         resultSet.getString("nombre_envia"),
                         resultSet.getString("nombre_recibe"),
-                        null, // direccionEnvia
+                        null,
                         resultSet.getString("otros_datosEnvia"),
-                        null, // direccionRecibe
+                        null,
                         resultSet.getString("otros_datosRecibe"),
                         resultSet.getString("numero_rastreo"),
                         resultSet.getDate("fecha_envio").toLocalDate()

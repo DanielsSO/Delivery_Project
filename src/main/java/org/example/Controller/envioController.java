@@ -1,6 +1,7 @@
 package org.example.Controller;
 
 import org.example.Models.envioModel;
+import org.example.utils.JDBCUtil;
 
 import java.sql.*;
 
@@ -10,7 +11,7 @@ public class envioController {
 
 
             try (Connection connection = JDBCUtil.getConnection();
-             PreparedStatement statement = connection.prepareStatement(sql)) {
+                 PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setInt(1, envia_id);
             statement.setInt(2, recibe_id);
             statement.setString(3, envio.getDireccionEnvia());

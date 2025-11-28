@@ -15,7 +15,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import org.example.Controller.JDBCUtil;
+import org.example.utils.JDBCUtil;
 import org.example.Models.envioModel;
 
 import java.sql.Connection;
